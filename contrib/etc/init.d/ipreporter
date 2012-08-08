@@ -1,0 +1,25 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          ipreporter
+# Required-Start:    $local_fs $remote_fs $network $syslog $named $all
+# Required-Stop:     $local_fs $remote_fs $network $syslog $named $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start/stop ipreporter
+### END INIT INFO
+
+set -e
+
+case $1 in
+  start)
+	echo "Starting ip reporter"
+	/root/ipreporter/client/setMyIps /root/ipreporter.json
+	/root/ipreporter/client/getAllIpReport /root/ipreporter.json
+	;;
+  stop)
+	echo "removing ip reports"
+	/root/ipreporter/client/delAllIpReport /root/ipreporter.json
+	;;
+esac
+exit 0
+
