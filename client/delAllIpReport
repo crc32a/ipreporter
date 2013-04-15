@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+import util
+import sys
+import os
+
+printf = util.printf
+
+if __name__ == "__main__":
+    prog = os.path.basename(sys.argv[0])
+    client = util.IpReporterClient()
+    for (k,v,m) in client.delAll():
+        printf("%s: %s %s\n",k,v,m)

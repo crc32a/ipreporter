@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+
+import util
+import sys
+import os
+
+printf = util.printf
+
+if __name__ == "__main__":
+    prog = os.path.basename(sys.argv[0])
+    client = util.IpReporterClient()
+    ips = sorted(client.getAll())
+    for (k,v) in ips:
+        printf("%s: %s\n",k,v)

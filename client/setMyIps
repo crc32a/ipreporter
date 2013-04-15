@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+import util
+
+client = util.IpReporterClient()
+client.setMyIps()
