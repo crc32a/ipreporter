@@ -1,0 +1,8 @@
+don't forget to run:
+update-rc.d ipreporter defaults
+
+after you copy contrib/etc/init.d/ipreporter on the client machine.
+also be sure to copy contrib/root/ipreporter.json to your /root dir
+
+on the server side copy contrib/etc/ipreporter/conf.json to your servers
+/etc/ipreporter directory.

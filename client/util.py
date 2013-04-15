@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import xmlrpclib
+import time
 import json
 import sys
 import os
@@ -84,8 +85,24 @@ class IpReporterClient(object):
         return self.s.delAll(self.cred)
 
     def setMyIps(self):
+        wait_iface = self.conf["wait_iface"]
+        rcount = self.conf["retrys"]
+        printf("Reading ip addresses\n")
+        while rcount > 0:
+            ips = scan()
+            printf("ipreporter[%i]=%s\n",rcount,ips)
+            rcount -= 1
+            #Incase the DHCP client hasen't picked up an ip yet. 
+            #Stall and retry
+            if not ips.has_key(wait_iface):
+                time.sleep(5.0)
+                continue
+            nic = ips[wait_iface]
+            if nic["ipv4"] == "" and nic["ipv6"] == "":
+                time.sleep(5.0)
+                continue
+            break
         self.s.delAll(self.cred)        
-        ips = scan()
         for (iface,ip_addrs) in ips.iteritems():
             for (ip_type,ip_addr) in ip_addrs.iteritems():
                 name = "%s_%s"%(iface,ip_type)

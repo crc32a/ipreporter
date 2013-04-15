@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 
+import time
 import util
+import sys
 
-client = util.IpReporterClient()
+
+if len(sys.argv)>=2:
+    client = util.IpReporterClient(conf_file=sys.argv[1])
+else:
+    client = util.IpReporterClient()
 client.setMyIps()

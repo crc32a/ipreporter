@@ -7,7 +7,9 @@ import os
 printf = util.printf
 
 if __name__ == "__main__":
-    prog = os.path.basename(sys.argv[0])
-    client = util.IpReporterClient()
+    if len(sys.argv)>=2:
+        client = util.IpReporterClient(conf_file=sys.argv[1])
+    else:
+        client = util.IpReporterClient()
     for (k,v,m) in client.delAll():
         printf("%s: %s %s\n",k,v,m)

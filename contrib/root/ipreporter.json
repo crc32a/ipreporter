@@ -1,7 +1,9 @@
 {
   "url": "https://your.xmlrpcserver.org:24123", 
+  "retrys": 5,
+  "wait_iface": "eth0",
   "cred": {
-    "passwd": "yourpasswd", 
+    "passwd": "yourpasswdhere", 
     "user": "ipreporter"
   }
 }
