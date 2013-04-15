@@ -1,0 +1,8 @@
+{
+  "url": "https://your.xmlrpcserver.org:24123", 
+  "cred": {
+    "passwd": "yourpasswd", 
+    "user": "ipreporter"
+  }
+}
+

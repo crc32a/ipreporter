@@ -1,0 +1,11 @@
+{
+    "recordfile":"/etc/ipreporter/records.json",
+    "passwd": "yourpassword",
+    "cert": "/etc/localhost.crt",
+    "max_child": 20,
+    "host": "your.xmlrpcserver.org",
+    "user": "ipreporter",
+    "key": "/etc/localhost.key",
+    "port": 24123
+}
+
